@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kabel LAN / Ethernet — M. RAFI AZIKRI</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#667085;
+  --primary:#2563eb; --primary2:#1d4ed8; --line:#e5e7eb;
+  --dark:#111827; --success:#16a34a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;letter-spacing:.4px}.logo span{color:var(--primary)}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:9px;font-size:14px;font-weight:650}
+nav a:hover{background:#eef4ff;color:var(--primary)}
+.hero{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:white}
+.hero-inner{max-width:1180px;margin:auto;padding:72px 20px 78px;display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center}
+.badge{display:inline-flex;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:7px 12px;border-radius:999px;font-size:13px}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.05;margin:18px 0}
+.hero p{font-size:18px;color:#dbeafe;max-width:720px}
+.profile{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:25px}
+.profile h3{margin-top:0}.profile-row{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.14);padding:10px 0;gap:20px}.profile-row:last-child{border:0}
+main{max-width:1180px;margin:auto;padding:42px 20px}
+section{scroll-margin-top:90px;margin-bottom:60px}
+.section-title{font-size:30px;margin:0 0 8px}.section-sub{color:var(--muted);margin:0 0 25px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 25px rgba(15,23,42,.05)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tool{display:flex;gap:15px;align-items:flex-start}.icon{width:46px;height:46px;border-radius:13px;background:#eaf1ff;display:grid;place-items:center;font-size:23px;flex:none}
+.tool h3{margin:0 0 4px}.tool p{margin:0;color:var(--muted);font-size:14px}
+.steps{counter-reset:step;display:grid;gap:14px}.step{position:relative;padding:18px 18px 18px 60px;border:1px solid var(--line);border-radius:15px;background:#fff}.step:before{counter-increment:step;content:counter(step);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--primary);color:#fff;font-weight:800}
+.wiring{overflow:auto}.wiring table{width:100%;border-collapse:collapse;min-width:700px}.wiring th,.wiring td{padding:11px;border-bottom:1px solid var(--line);text-align:left}.wiring th{background:#f8fafc}
+.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#eef4ff;color:#1d4ed8;font-size:12px;font-weight:750}
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.upload{border:2px dashed #cbd5e1;border-radius:18px;padding:25px;text-align:center;background:#f8fafc;transition:.2s}
+.upload.drag{border-color:var(--primary);background:#eff6ff}
+.upload input{display:none}
+.upload-btn{display:inline-block;background:var(--primary);color:#fff;padding:10px 15px;border-radius:10px;cursor:pointer;font-weight:750}
+.file-name{margin-top:12px;color:var(--muted);font-size:14px;word-break:break-word}
+video{width:100%;border-radius:14px;background:#0b1020;min-height:230px}
+.viewer{background:#111827;border-radius:16px;padding:16px;color:white}
+.slides{aspect-ratio:16/9;background:white;color:#111827;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;padding:35px;position:relative;overflow:hidden}
+.slide{display:none;width:100%}.slide.active{display:block}.slide h2{font-size:clamp(25px,4vw,44px);margin:0 0 12px}.slide p{font-size:clamp(14px,2vw,19px);color:#475467}
+.controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px}.controls button{border:0;background:#374151;color:white;padding:9px 14px;border-radius:9px;cursor:pointer}.controls button:hover{background:#4b5563}
+.note{padding:15px 17px;border-left:4px solid var(--primary);background:#eff6ff;border-radius:9px;color:#334155}
+footer{background:#111827;color:#cbd5e1;text-align:center;padding:30px 20px}
+@media(max-width:850px){.hero-inner{grid-template-columns:1fr;padding-top:52px}.grid{grid-template-columns:1fr 1fr}.media-grid{grid-template-columns:1fr}}
+@media(max-width:560px){nav{display:none}.nav{padding:12px 15px}.hero-inner,main{padding-left:15px;padding-right:15px}.grid{grid-template-columns:1fr}.card{padding:18px}h1{font-size:39px}.hero p{font-size:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">LAN<span>Lab</span> • MRA</div>
+    <nav>
+      <a href="#pendahuluan">Pendahuluan</a>
+      <a href="#alat">Alat & Bahan</a>
+      <a href="#pembuatan">Pembuatan</a>
+      <a href="#media">PPT & Video</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="badge">PROTOTYPE • PEMBELAJARAN JARINGAN</span>
+      <h1>Kabel LAN / Ethernet</h1>
+      <p>Media pembelajaran interaktif untuk memahami kabel LAN, alat dan bahan, susunan kabel RJ45, serta langkah pembuatannya.</p>
+    </div>
+    <div class="profile">
+      <h3>Profil Mahasiswa</h3>
+      <div class="profile-row"><span>Nama</span><strong>M. RAFI AZIKRI</strong></div>
+      <div class="profile-row"><span>Kelas</span><strong>1TIA</strong></div>
+    </div>
+  </div>
+</section>
+
+<main>
+<section id="pendahuluan">
+  <h2 class="section-title">Pendahuluan</h2>
+  <p class="section-sub">Mengenal dasar kabel LAN/Ethernet.</p>
+  <div class="card">
+    <p><strong>Kabel LAN (Local Area Network)</strong> adalah kabel jaringan yang digunakan untuk menghubungkan perangkat dalam jaringan lokal. Dalam jaringan Ethernet, kabel tembaga UTP (Unshielded Twisted Pair) dengan konektor modular RJ45 banyak digunakan untuk menghubungkan komputer, switch, router, dan perangkat jaringan lainnya.</p>
+    <p>Kabel Ethernet memiliki beberapa kategori, misalnya Cat5e dan Cat6. Cara pemasangan kabel ke konektor harus mengikuti susunan pin yang benar. Dua pola yang umum dikenal adalah <strong>T568A</strong> dan <strong>T568B</strong>. Jika kedua ujung menggunakan susunan yang sama, kabel tersebut merupakan <strong>straight-through</strong>; jika satu ujung T568A dan ujung lainnya T568B, susunannya merupakan <strong>crossover</strong>. (rujukan: Cisco)</p>
+    <div class="note">Prototype ini dibuat responsif agar materi dapat dibaca melalui HP maupun desktop. Bagian PPT dan Video sudah disediakan sebagai tempat upload.</div>
+  </div>
+</section>
+
+<section id="alat">
+  <h2 class="section-title">Alat & Bahan</h2>
+  <p class="section-sub">Perlengkapan yang umum digunakan saat membuat kabel LAN.</p>
+  <div class="grid">
+    <div class="card tool"><div class="icon">🔌</div><div><h3>Kabel UTP</h3><p>Media kabel berisi pasangan kawat berpilin untuk komunikasi Ethernet.</p></div></div>
+    <div class="card tool"><div class="icon">🔗</div><div><h3>Konektor RJ45</h3><p>Konektor modular yang dipasang pada ujung kabel jaringan.</p></div></div>
+    <div class="card tool"><div class="icon">🗜️</div><div><h3>Tang Crimping</h3><p>Digunakan untuk menekan pin RJ45 agar terhubung dengan penghantar kabel.</p></div></div>
+    <div class="card tool"><div class="icon">✂️</div><div><h3>Stripper / Cutter</h3><p>Untuk membuka jaket kabel dan merapikan atau memotong ujung kabel.</p></div></div>
+    <div class="card tool"><div class="icon">🧪</div><div><h3>LAN Cable Tester</h3><p>Untuk memeriksa urutan koneksi dan kontinuitas kabel setelah crimping.</p></div></div>
+    <div class="card tool"><div class="icon">🧵</div><div><h3>Boot RJ45</h3><p>Opsional, dapat digunakan sebagai pelindung dan perapihan bagian konektor.</p></div></div>
+  </div>
+</section>
+
+<section id="pembuatan">
+  <h2 class="section-title">Cara Membuat Kabel LAN</h2>
+  <p class="section-sub">Contoh alur pembuatan kabel straight-through.</p>
+  <div class="steps">
+    <div class="step"><strong>Siapkan alat dan bahan.</strong><br>Siapkan kabel UTP, dua konektor RJ45, tang crimping, pemotong/stripper, dan tester.</div>
+    <div class="step"><strong>Potong dan kupas kabel.</strong><br>Potong kabel sesuai panjang yang diperlukan, lalu buka jaket luarnya secukupnya.</div>
+    <div class="step"><strong>Rapikan dan susun delapan kawat.</strong><br>Atur kawat berdasarkan standar yang dipilih. Untuk straight-through, kedua ujung menggunakan susunan yang sama.</div>
+    <div class="step"><strong>Masukkan ke RJ45.</strong><br>Pastikan semua kawat masuk sampai posisi ujung konektor dan urutannya tidak berubah.</div>
+    <div class="step"><strong>Crimping.</strong><br>Masukkan konektor ke tang crimping lalu tekan dengan kuat dan tepat.</div>
+    <div class="step"><strong>Ulangi pada ujung lainnya.</strong><br>Untuk straight-through, gunakan susunan yang sama seperti ujung pertama.</div>
+    <div class="step"><strong>Uji dengan LAN tester.</strong><br>Periksa apakah semua jalur terhubung sesuai urutan. Jika ada jalur yang tidak sesuai, periksa kembali crimping dan susunan kabel.</div>
+  </div>
+
+  <div class="card wiring" style="margin-top:20px">
+    <h3>Urutan Warna T568B</h3>
+    <p class="section-sub">Urutan pin 1–8 yang sering digunakan untuk contoh kabel straight-through.</p>
+    <table>
+      <thead><tr><th>Pin</th><th>Warna</th><th>Pin</th><th>Warna</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Putih-Orange</td><td>5</td><td>Putih-Biru</td></tr>
+        <tr><td>2</td><td>Orange</td><td>6</td><td>Hijau</td></tr>
+        <tr><td>3</td><td>Putih-Hijau</td><td>7</td><td>Putih-Cokelat</td></tr>
+        <tr><td>4</td><td>Biru</td><td>8</td><td>Cokelat</td></tr>
+      </tbody>
+    </table>
+    <p style="color:#667085;font-size:13px;margin-bottom:0">Untuk kabel straight-through, susunan warna pada kedua ujung dibuat sama. (rujukan: Cisco)</p>
+  </div>
+</section>
+
+<section id="media">
+  <h2 class="section-title">PPT & Video Pembelajaran</h2>
+  <p class="section-sub">Tempatkan materi presentasi dan video praktik di bagian ini.</p>
+  <div class="media-grid">
+    <div class="card">
+      <h3>📊 Presentasi PPT — Prototype</h3>
+      <div class="viewer">
+        <div class="slides">
+          <div class="slide active"><span class="pill">SLIDE 1</span><h2>Kabel LAN / Ethernet</h2><p>M. RAFI AZIKRI • 1TIA</p></div>
+          <div class="slide"><span class="pill">SLIDE 2</span><h2>Apa itu Kabel LAN?</h2><p>Media untuk menghubungkan perangkat dalam jaringan lokal.</p></div>
+          <div class="slide"><span class="pill">SLIDE 3</span><h2>Alat & Bahan</h2><p>UTP • RJ45 • Crimping Tool • Tester • Cutter</p></div>
+          <div class="slide"><span class="pill">SLIDE 4</span><h2>Cara Pembuatan</h2><p>Potong → Susun → Masukkan RJ45 → Crimp → Tes</p></div>
+        </div>
+        <div class="controls">
+          <button onclick="prevSlide()">‹ Sebelumnya</button><span id="slideNo">1 / 4</span><button onclick="nextSlide()">Berikutnya ›</button>
+        </div>
+      </div>
+      <div class="upload" id="pptDrop" style="margin-top:15px">
+        <p><strong>Upload PPT/PPTX</strong></p>
+        <label class="upload-btn">Pilih File<input id="pptInput" type="file" accept=".ppt,.pptx,.pdf"></label>
+        <div class="file-name" id="pptName">Belum ada file dipilih.</div>
+      </div>
+      <p style="font-size:13px;color:#667085">Prototype menampilkan slide contoh. File PPT/PPTX yang dipilih tersimpan sebagai file lokal di browser untuk sesi ini; untuk preview slide PPTX secara penuh dapat ditambahkan backend/Office viewer pada versi berikutnya.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎥 Video Praktik</h3>
+      <video id="videoPlayer" controls playsinline poster="">
+        <source id="videoSource" src="" type="video/mp4">
+        Browser Anda belum mendukung video HTML5.
+      </video>
+      <div class="upload" id="videoDrop" style="margin-top:15px">
+        <p><strong>Upload Video</strong></p>
+        <label class="upload-btn">Pilih Video<input id="videoInput" type="file" accept="video/*"></label>
+        <div class="file-name" id="videoName">Belum ada video. Silakan upload video praktik Anda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <strong>M. RAFI AZIKRI • 1TIA</strong><br>
+  Media Pembelajaran Kabel LAN / Ethernet
+</footer>
+
+<script>
+let current=0;
+const slides=[...document.querySelectorAll('.slide')];
+function showSlide(i){
+  current=(i+slides.length)%slides.length;
+  slides.forEach((s,n)=>s.classList.toggle('active',n===current));
+  document.getElementById('slideNo').textContent=(current+1)+' / '+slides.length;
+}
+function nextSlide(){showSlide(current+1)}
+function prevSlide(){showSlide(current-1)}
+
+document.getElementById('pptInput').addEventListener('change', e=>{
+  const f=e.target.files[0];
+  document.getElementById('pptName').textContent=f ? `✓ ${f.name} — ${(f.size/1024/1024).toFixed(2)} MB` : 'Belum ada file dipilih.';
+});
+document.getElementById('videoInput').addEventListener('change', e=>{
+  const f=e.target.files[0];
+  if(!f) return;
+  const url=URL.createObjectURL(f);
+  const player=document.getElementById('videoPlayer');
+  player.src=url; player.load();
+  document.getElementById('videoName').textContent=`✓ ${f.name} — ${(f.size/1024/1024).toFixed(2)} MB`;
+});
+['pptDrop','videoDrop'].forEach(id=>{
+  const el=document.getElementById(id);
+  ['dragenter','dragover'].forEach(ev=>el.addEventListener(ev,e=>{e.preventDefault();el.classList.add('drag')}));
+  ['dragleave','drop'].forEach(ev=>el.addEventListener(ev,e=>{e.preventDefault();el.classList.remove('drag')}));
+});
+</script>
+</body>
+</html>
